@@ -1,14 +1,13 @@
 # homebrew-mac-security
 
 Homebrew tap for **mac-security** — the MadhavTech team's read-only daily PolinRider /
-supply-chain health check. Source + releases: [`Princy-Madhavtech/mac-security`](https://github.com/Princy-Madhavtech/mac-security) (private).
+supply-chain health check. This tap and its release asset are **public** (just the read-only
+scripts + the PolinRider IoC indicators); the source repo, incident docs, and internal allowlist
+stay private in `Princy-Madhavtech/mac-security`.
 
 ## Install
 
 ```bash
-# private source/release → give brew a token with read access to Princy-Madhavtech/mac-security
-export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)
-
 brew tap sidvekariya510/mac-security
 brew install mac-security
 

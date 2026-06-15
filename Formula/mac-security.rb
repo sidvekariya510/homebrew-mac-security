@@ -1,13 +1,13 @@
 # Homebrew formula for the MadhavTech mac-security health check.
 # Tap: sidvekariya510/homebrew-mac-security  →  `brew tap sidvekariya510/mac-security`
-# Source + releases live at Princy-Madhavtech/mac-security (private). The url below pins the
-# sha256 of a self-built, signed-tag release asset — what you install is byte-for-byte what
-# was tagged (see scripts/cut-release.sh in the source repo).
+# The PUBLIC asset below is built from a SIGNED tag on the private source repo
+# (Princy-Madhavtech/mac-security) and hosted here on the tap, so install needs no token. The
+# pinned sha256 means what you install is byte-for-byte what was tagged (scripts/cut-release.sh).
 class MacSecurity < Formula
   desc "Read-only daily PolinRider / supply-chain health check for the MadhavTech team"
   homepage "https://github.com/Princy-Madhavtech/mac-security"
-  url "https://github.com/Princy-Madhavtech/mac-security/releases/download/v0.1.0/mac-security-0.1.0.tar.gz"
-  sha256 "abfc078dac56631d6af7ac43416cdde9cae8fa1e16949e0f92e86d2ab35cc8e5"
+  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.1.1/mac-security-0.1.1.tar.gz"
+  sha256 "983cc093bc94f803497334a38e691808d67783e6cf46df009d2847dff92431c5"
   license :cannot_represent # internal tool, not publicly licensed
 
   depends_on "gh"
@@ -29,9 +29,8 @@ class MacSecurity < Formula
       One-time per-Mac setup (installs the launchd daily agent + clone-guard; writes to $HOME only):
         madhavtech-sec setup
 
-      The source repo + release asset are PRIVATE — Homebrew needs a GitHub token with read
-      access to Princy-Madhavtech/mac-security. If the download 404s:
-        export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)
+      To pin a refreshed IoC list that survives `brew upgrade`, drop it at
+      ~/.config/madhavtech-sec/iocs.txt (it takes precedence over the bundled copy).
 
       Security lead only (the weekly IoC-refresh pass commits): keep a git clone and run
       `./install.sh --weekly` from it — a read-only Homebrew keg can't commit.
