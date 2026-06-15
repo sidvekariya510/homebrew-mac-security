@@ -1,13 +1,13 @@
 # Homebrew formula for the MadhavTech mac-security health check.
 # Tap: sidvekariya510/homebrew-mac-security  →  `brew tap sidvekariya510/mac-security`
 # The PUBLIC asset below is built from a SIGNED tag on the private source repo
-# (Princy-Madhavtech/mac-security) and hosted here on the tap, so install needs no token. The
+# (sidvekariya510/mac-security) and hosted here on the tap, so install needs no token. The
 # pinned sha256 means what you install is byte-for-byte what was tagged (scripts/cut-release.sh).
 class MacSecurity < Formula
   desc "Read-only daily PolinRider / supply-chain health check for the MadhavTech team"
-  homepage "https://github.com/Princy-Madhavtech/mac-security"
-  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.1.1/mac-security-0.1.1.tar.gz"
-  sha256 "983cc093bc94f803497334a38e691808d67783e6cf46df009d2847dff92431c5"
+  homepage "https://github.com/sidvekariya510/homebrew-mac-security"
+  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.1.2/mac-security-0.1.2.tar.gz"
+  sha256 "a39a9fc6b897c142bd28a39ddecff0c1960fc1b982fa10173a7cff9dff8080dd"
   license :cannot_represent # internal tool, not publicly licensed
 
   depends_on "gh"
