@@ -21,12 +21,18 @@ brew install mac-security                 # pulls gh, jq, osv-scanner, terminal-
 madhavtech-sec setup                      # installs checks at 10:00 + 18:00 + clone-guard; writes to $HOME only
 ```
 
-`setup` ends with a **launchd self-test**. If it prints a TCC warning, your Mac is blocking the
-background check from reading your folders — grant **Full Disk Access to `/bin/bash`**:
-
-> System Settings → Privacy & Security → **Full Disk Access** → **+** → press **⌘⇧G**, type
-> `/bin/bash`, add it, toggle it **on** — then run `madhavtech-sec setup` again. (One grant also
-> covers the weekly check.)
+> [!IMPORTANT]
+> **Most Macs need one manual step after `setup`: grant Full Disk Access to `/bin/bash`.**
+>
+> `setup` finishes with a **launchd self-test**. On a default-configured Mac it reports the scheduled
+> scan is **TCC-blocked** — the 10:00/18:00 check still runs, but macOS won't let it read your folders,
+> so it would silently report "clean" while scanning nothing. To fix it:
+>
+> 1. System Settings → Privacy & Security → **Full Disk Access**
+> 2. Click **+**, press **⌘⇧G**, type `/bin/bash`, select it, and toggle it **on**
+> 3. Re-run `madhavtech-sec setup` — the self-test should now print **✓ agent runs unattended**
+>
+> If the self-test already shows **✓**, your Mac doesn't need this — skip it. One grant also covers the weekly check.
 
 ## Check your Mac's health
 A scan runs automatically twice a day (10:00 and 18:00) and notifies you only on a finding. To run one yourself:
