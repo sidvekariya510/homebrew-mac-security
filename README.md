@@ -60,6 +60,25 @@ brew update && brew trust sidvekariya510/mac-security && brew upgrade mac-securi
 (Homebrew 6.x re-checks trust when the formula changes, so the `brew trust` keeps upgrades from being refused.
 Re-running `setup` re-baselines and re-tests.)
 
+## Troubleshooting
+
+**`brew update` fails: `homebrew/homebrew-cask-versions does not exist!`** (or any other tap "does not
+exist"). A deprecated Homebrew tap is still registered on your Mac and blocks `brew update` from
+refreshing *any* tap — including this one — so you'd be stuck on an old version. Remove the dead tap, then retry:
+```bash
+brew untap homebrew/homebrew-cask-versions   # remove the deprecated tap (exact name is in the error)
+brew update && brew upgrade mac-security
+```
+It's safe — `cask-versions` was folded into the default `homebrew/cask`. (`brew tap` lists all your taps.)
+
+**`brew install` says "already installed and up-to-date" but you're on an old version.** `install`
+won't upgrade an existing install, and without `brew update` your local formula is stale. Use the Update
+command above (`brew update && … brew upgrade …`), not `brew install`.
+
+**`setup` warns the agent is TCC-blocked.** The scheduled scan can't read your folders. Grant **Full Disk
+Access to `/bin/bash`** (System Settings → Privacy & Security → Full Disk Access → ⌘⇧G → `/bin/bash`), then
+re-run `madhavtech-sec setup`.
+
 ## Uninstall
 ```bash
 launchctl unload ~/Library/LaunchAgents/com.madhavtech.healthcheck.*.plist 2>/dev/null
