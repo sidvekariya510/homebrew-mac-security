@@ -44,6 +44,21 @@ madhavtech-sec selftest         # confirms the IoC list loads
 Reports are saved (90-day retention) to `~/.local/state/madhavtech-sec/reports/health-YYYY-MM-DD.txt`.
 When a notification fires, **click it** to open that day's report.
 
+## Sweep your GitHub repos
+Beyond the local machine, sweep every repo your GitHub account(s) can reach for the same indicators
+(payload at any branch tip, propagation markers, and commits that look like an attacker push):
+```bash
+gh auth login                    # once, if not already signed in
+madhavtech-sec gh-sweep          # read-only sweep of all repos across your gh accounts
+madhavtech-sec gh-sweep --deep   # also pickaxe full git history (slower, more thorough)
+```
+Each repo is shallow-cloned and `git grep`'d; if a repo won't clone, it's scanned via the GitHub API
+(never silently skipped). Same exit codes as above; never executes repo code. It also STOPs on commits
+made outside your team's timezone — set `TEAM_TZ_ISO` (default `+05:30`) in `~/.config/madhavtech-sec/config`.
+
+**Clone guard:** `setup` adds a shell hook that auto-sweeps any repo the moment you `git clone` /
+`gh repo clone` it — so freshly-pulled code is checked before you `cd` in or install.
+
 ## What it checks (read-only)
 - **Host:** scan-root readability, live `node -e` implant, live C2 connection, new LaunchAgents/cron vs a
   clean baseline, shell-startup injection, SSH-key encryption + new keys + git hooks, VS Code extensions.
