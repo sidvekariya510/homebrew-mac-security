@@ -6,13 +6,14 @@
 class MacSecurity < Formula
   desc "Read-only daily PolinRider / supply-chain health check for the MadhavTech team"
   homepage "https://github.com/sidvekariya510/homebrew-mac-security"
-  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.1.2/mac-security-0.1.2.tar.gz"
-  sha256 "a39a9fc6b897c142bd28a39ddecff0c1960fc1b982fa10173a7cff9dff8080dd"
+  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.1.3/mac-security-0.1.3.tar.gz"
+  sha256 "8b8a9bd98dca01b266fb888584fc148c7c76be09e2e9a02e14e8a6e148b9b835"
   license :cannot_represent # internal tool, not publicly licensed
 
   depends_on "gh"
   depends_on "jq"
   depends_on "osv-scanner"
+  depends_on "terminal-notifier" # makes the alert clickable → opens the report (else osascript fallback opens a blank Script Editor)
 
   def install
     # install the whole tree under libexec (preserves bin/ data/ shell/ launchd/ weekly/),
