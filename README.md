@@ -3,7 +3,7 @@
 Homebrew tap for **mac-security** — the MadhavTech team's read-only daily PolinRider /
 supply-chain health check. This tap and its release asset are **public** (just the read-only
 scripts + the PolinRider IoC indicators); the source repo, incident docs, and internal allowlist
-stay private in `Princy-Madhavtech/mac-security`.
+stay private in `sidvekariya510/mac-security`.
 
 ## Install
 
