@@ -18,7 +18,7 @@ any macOS developer.
 brew tap sidvekariya510/mac-security
 brew trust sidvekariya510/mac-security    # Homebrew 6.x requires trusting a third-party tap once
 brew install mac-security                 # pulls gh, jq, osv-scanner, terminal-notifier
-madhavtech-sec setup                      # installs a daily 10:00 check + clone-guard; writes to $HOME only
+madhavtech-sec setup                      # installs checks at 10:00 + 18:00 + clone-guard; writes to $HOME only
 ```
 
 `setup` ends with a **launchd self-test**. If it prints a TCC warning, your Mac is blocking the
@@ -29,7 +29,7 @@ background check from reading your folders — grant **Full Disk Access to `/bin
 > covers the weekly check.)
 
 ## Check your Mac's health
-A scan runs automatically every day at 10:00 and notifies you only on a finding. To run one yourself:
+A scan runs automatically twice a day (10:00 and 18:00) and notifies you only on a finding. To run one yourself:
 ```bash
 madhavtech-sec healthcheck      # scans now; prints a report
 madhavtech-sec version          # shows version + that it's in Homebrew-managed mode
