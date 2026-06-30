@@ -47,7 +47,7 @@ madhavtech-sec selftest          # confirm the IoC list loads
 | Result | Exit | Meaning |
 |---|---|---|
 | **✓ CLEAN** | 0 | nothing found (silent) |
-| **⚠ FLAG** | 1 | review: new launch agent / SSH key / config obfuscation / etc. |
+| **⚠ FLAG** | 1 | review — e.g. new launch agent / SSH key / config obfuscation, **or a repo `gh-sweep` couldn't access** (see Troubleshooting). A FLAG is a *lead*, not confirmed malware. |
 | **■ HARD-STOP** | 2 | critical: live payload, C2, `node -e` implant, or `MAL-` package |
 
 ## Troubleshooting
@@ -59,6 +59,16 @@ madhavtech-sec selftest          # confirm the IoC list loads
 - **`setup` warns the agent is TCC-blocked** → grant Full Disk Access to `/bin/bash` (see Install), then
   re-run `madhavtech-sec setup`.
 - **"already installed and up-to-date" but on an old version** → use the **Update** command, not `brew install`.
+- **`gh-sweep` shows many `⚠ FLAG … repo UNSCANNED (needs an account with access)`** → **this is not malware.**
+  It means the tool could neither clone nor read those repos, so it flags them as *unscanned* instead of
+  pretending they're clean. Your GitHub sign-in is just missing access. Fix it, then re-run `madhavtech-sec gh-sweep`:
+  ```bash
+  gh auth status            # logged in? does it say an org needs SSO authorization?
+  gh auth login             # if you're not signed in
+  gh auth refresh -s repo   # then authorize SSO for the org(s) in the browser
+  ```
+  For repos you clone over SSH, make sure your SSH key is added to GitHub. A line like
+  `• … API-fallback scanned … CLEAN` is fine — the clone failed but the API read succeeded and found nothing.
 
 ## Uninstall
 ```bash
