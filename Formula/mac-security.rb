@@ -6,8 +6,8 @@
 class MacSecurity < Formula
   desc "Read-only daily PolinRider / supply-chain health check for the MadhavTech team"
   homepage "https://github.com/sidvekariya510/homebrew-mac-security"
-  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.2.0/mac-security-0.2.0.tar.gz"
-  sha256 "0de174c353dc58d7d54d76237307f96baa1c611ef1398c8bb8d733630a98c31a"
+  url "https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.2.1/mac-security-0.2.1.tar.gz"
+  sha256 "31e23cd0993dd88b0e41001d7fffd0a64c8c5a934389a8763813d494141dbf38"
   license :cannot_represent # internal tool, not publicly licensed
 
   depends_on "gh"
