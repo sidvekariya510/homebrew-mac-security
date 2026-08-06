@@ -212,7 +212,7 @@ The formula pins the **sha256** of an asset built by `git archive` from a **sign
 exactly what was tagged. You can check it yourself:
 
 ```bash
-curl -fsSL -o /tmp/ms.tgz https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.2.2/mac-security-0.2.2.tar.gz
+curl -fsSL -o /tmp/ms.tgz https://github.com/sidvekariya510/homebrew-mac-security/releases/download/v0.2.3/mac-security-0.2.3.tar.gz
 shasum -a 256 /tmp/ms.tgz     # must match the sha256 in Formula/mac-security.rb
 ```
 
